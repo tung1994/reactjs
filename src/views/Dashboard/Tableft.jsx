@@ -1,0 +1,43 @@
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { selectListUser } from '../../selectors/dashboard'
+
+const HeaderLeft = () => {
+    return (
+        <div style={{marginLeft: '10px', marginRight: '10px'}}>
+            <h2>Chat</h2>
+            <input className='form-control input' placeholder='Tìm kiếm trên Messenger'/>
+        </div>
+    )
+}
+
+function userSelected(id) {
+    
+}
+
+const ItemUser = (props) => {
+    const {active, image, name, info, id} = props;
+    return (
+        <div className='d-flex margin' onClick={userSelected(id)}>
+          <img className='image' src={image}/>
+          <div className='info'>
+            <p>{name} <br/>
+              {info}・{active}
+            </p>
+          </div>
+        </div>
+    );
+}
+
+const Tableft = () => { 
+    const UserInfos = useSelector(selectListUser())
+    return (
+        <div className='tab-left'>
+            <HeaderLeft />
+            {UserInfos.map((value, key) => (
+                <ItemUser id={value.id} image={value.profile_image_url} name={value.name} info={value.last_message} active={value.last_time}/>
+            ))}
+        </div>
+    )}
+
+export default Tableft

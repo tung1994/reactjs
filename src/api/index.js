@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_ENV === 'dev' ? 'http://localhost:3000/' : '/',
+  baseURL: 'http://yukawa-dev.axalize.vn/',
   timeout: 60000,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',

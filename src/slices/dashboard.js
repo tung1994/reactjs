@@ -4,15 +4,27 @@ import { useInjectReducer, useInjectSaga } from '../utils/redux-injector'
 import { dashboardSaga } from '../sagas/dashboard'
 
 export const initialState = {
-  dash: 'board'
+  user: [],
+  content: [],
 }
 
 const slice = createSlice({
   name: 'dashboard',
   initialState,
   reducers: {
-    initDashboard() {},
-    initDashboardSuccess() {},
+    initDashboard(state, action) {
+      
+    },
+    initDashboardSuccess(state, action) {
+      const {friends} = action.payload
+      state.user = friends
+    },
+    // currentSelected()
+
+    userSelected(state, action) {
+      const {messages} = action.payload
+      state.content = messages
+    }
   },
 })
 

@@ -1,0 +1,96 @@
+.body {
+    background-color: white;
+}
+.tab-left {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    width: 20%;
+}
+.tab-center {
+    width: 60%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tab-right {
+    width: 20%;
+    text-align: center;
+}
+.image {
+    border-radius: 40px;
+    width: 56px;
+    height: 56px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.margin {
+    margin: 5px 0;
+}
+.margin:hover {
+    background-color: #ebedef;
+    cursor: pointer;
+}
+.input {
+    border-radius: 50px;
+    margin-right: 10px;
+}
+.info {
+    margin-top: 10px;
+}
+.image1 {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+}
+.image2 {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+}
+.name-center {
+    font-size: 16px;
+    font-weight: bold;
+}
+.borderBottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.receive-text {
+    background-color: #ebedef;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px 5px;
+}
+.text-right {
+    float: right;
+    background-color: rgb(48,200,180);
+    border-radius: 18px;
+    color: white;
+    margin-right: 10px;
+}
+.sent-text {
+    padding: 5px 5px;
+}
+.text-inline {
+    height: 10px;
+}
+.message {
+    margin-bottom: 10px;
+}
+.clearfix {
+    float: none;
+}
+.image3 {
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.right-info {
+    margin-top: 20px;
+}
+.active {
+    background-color: #ebedef;
+}
