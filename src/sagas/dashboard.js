@@ -11,11 +11,11 @@ function* initDashboard({ payload }) {
   }
 }
 
-function* userSelected(friend_id) {
+function* userSelected() {
   try {
-    const response = yield call(api.getContent, 1)
-    console.log(response);
-    yield put(actions.userSelected(response.data))  
+    const res = yield call(api.getContent)
+
+    yield put(actions.messageById(res.data))  
   } catch {
 
   }
@@ -23,5 +23,5 @@ function* userSelected(friend_id) {
 
 export function* dashboardSaga() {
   yield takeLatest(actions.initDashboard.type, initDashboard)
-  yield takeLatest(actions.userSelected.type, userSelected)
+  yield takeLatest(actions.initDashboard.type, userSelected)
 }

@@ -11,8 +11,8 @@ const HeaderLeft = () => {
     )
 }
 
-function userSelected(id) {
-    
+function userSelected({id}) {
+    // useSelector(selectMessageById(id))
 }
 
 const ItemUser = (props) => {

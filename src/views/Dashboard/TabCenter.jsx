@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { selectMessageById } from '../../selectors/dashboard'
 
 const HeaderCenter = () => {
     return (
@@ -12,57 +14,57 @@ const HeaderCenter = () => {
     );
 }
 
-const MessageCenter = (props) => {
+const FooterSend = () => {
     return (
-        <div>
-            <div className='message'>
-            <div className='d-flex'>
-                <img className='image2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9a-rqE4Cgj0D55zJ-lUGUrIu1bvN31zrwaMMjWlJViZaXqTK9awchBhDOQjN1EiclqEQ&usqp=CAU'/>
-                <div className='receive-text'>
-                <p className='text-inline'>{props.received}</p>
-                </div>
-            </div>
-            <div className='text-right'>
-                <div className='sent-text'>
-                <p className='text-inline'>{props.sent}</p>
-                </div>
-            </div>
-            </div>
-            <h2 className='clearfix'></h2>
+        <div className='d-flex footer'>
+            <input className='form-control input' placeholder='Aa'/>
         </div>
+    )
+}
+
+const Messagereceives = (props) => {
+    return (
+        <>
+        <div className='d-flex'>
+            <img className='image2' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9a-rqE4Cgj0D55zJ-lUGUrIu1bvN31zrwaMMjWlJViZaXqTK9awchBhDOQjN1EiclqEQ&usqp=CAU'/>
+            <div className='receive-text'>
+            <p className='text-inline'>{props.content}</p>
+            </div>
+        </div>
+        <h2 className='clearfix'></h2>
+        </>
     );
 }
 
-const Messages = [
-    {
-        'received' : 'do you know? I like you so much',
-        'sent'     : "i don't know. Sorry",
-    },
-    {
-        'received' : 'do you know? I like you so much',
-        'sent'     : "i don't know. Sorry",
-    },
-    {
-        'received' : 'do you know? I like you so much',
-        'sent'     : "i don't know. Sorry",
-    },
-    {
-        'received' : 'do you know? I like you so much',
-        'sent'     : "i don't know. Sorry",
-    },
-    {
-        'received' : 'do you know? I like you so much',
-        'sent'     : "i don't know. Sorry",
-    },
-];
+const MessageSends = (props) => {
+    return (
+        <>
+        <div className='text-right'>
+            <div className='sent-text'>
+                <p className='text-inline'>{props.content}</p>
+            </div>
+        </div>
+        <h2 className='clearfix'></h2>
+        </>
+    );
+}
 
 const TabCenter = () => {
+    const Messages = useSelector(selectMessageById())
     return (
         <div className='tab-center'>
             <HeaderCenter/>
-            {Messages.map((value, key) => (
-                <MessageCenter received={value.received} sent={value.sent}/>
-            ))}
+            <div className='message'>
+                {Messages.map((value, key) => 
+                    {
+                        return value.from == 0 ?
+                            <Messagereceives content={value.content}/>
+                        :
+                            <MessageSends content={value.content}/>
+                    }        
+                )}
+            </div>
+            <FooterSend/>
         </div>
     );
 };

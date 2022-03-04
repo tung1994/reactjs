@@ -21,9 +21,9 @@ const slice = createSlice({
     },
     // currentSelected()
 
-    userSelected(state, action) {
-      const {messages} = action.payload
-      state.content = messages
+    messageById(state, action) {
+      const {friends} = action.payload
+      state.content = friends
     }
   },
 })
