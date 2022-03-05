@@ -1,6 +1,8 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectMessageById } from '../../selectors/dashboard'
+import { useParams } from 'react-router-dom'
+import { dashboardActions as action } from 'src/slices/dashboard'
 
 const HeaderCenter = () => {
     return (
@@ -50,6 +52,15 @@ const MessageSends = (props) => {
 }
 
 const TabCenter = () => {
+    const {id} = useParams();
+    const dispatch = useDispatch();
+    // console.log(id)
+    // const Messages = useSelector(selectMessageById(id))
+    useEffect(() => {
+        if(id) {
+            dispatch(action.fetchMessages(id))
+        }
+    }, [id])
     const Messages = useSelector(selectMessageById())
     return (
         <div className='tab-center'>

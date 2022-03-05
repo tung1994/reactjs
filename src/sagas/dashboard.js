@@ -11,11 +11,21 @@ function* initDashboard({ payload }) {
   }
 }
 
-function* userSelected() {
-  try {
-    const res = yield call(api.getContent)
+// function* userSelected() {
+//   try {
+//     const res = yield call(api.getContent)
 
-    yield put(actions.messageById(res.data))  
+//     yield put(actions.messageById(res.data))  
+//   } catch {
+
+//   }
+// }
+
+function* fetchMessages({ payload }) {
+  try {
+    const result = yield call(api.getContent, payload)
+
+    yield put(actions.fetchMessages(result.data))
   } catch {
 
   }
@@ -23,5 +33,6 @@ function* userSelected() {
 
 export function* dashboardSaga() {
   yield takeLatest(actions.initDashboard.type, initDashboard)
-  yield takeLatest(actions.initDashboard.type, userSelected)
+  // yield takeLatest(actions.initDashboard.type, userSelected)
+  yield takeLatest(actions.fetchMessages.type, fetchMessages)
 }

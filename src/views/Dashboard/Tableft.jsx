@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectListUser } from '../../selectors/dashboard'
+import { useHistory } from 'react-router-dom'
 
 const HeaderLeft = () => {
     return (
@@ -11,14 +12,14 @@ const HeaderLeft = () => {
     )
 }
 
-function userSelected({id}) {
-    // useSelector(selectMessageById(id))
-}
-
 const ItemUser = (props) => {
     const {active, image, name, info, id} = props;
+    const history = useHistory()
+    const userSelected = () => {
+        history.push('/' + id)
+    }
     return (
-        <div className='d-flex margin' onClick={userSelected(id)}>
+        <div className='d-flex margin' onClick={ () =>userSelected(id) }>
           <img className='image' src={image}/>
           <div className='info'>
             <p>{name} <br/>

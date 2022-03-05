@@ -21,10 +21,15 @@ const slice = createSlice({
     },
     // currentSelected()
 
-    messageById(state, action) {
+    fetchMessages(state, action) {
       const {friends} = action.payload
       state.content = friends
-    }
+    },
+
+    // messageById(state, action) {
+    //   const {friends} = action.payload
+    //   state.content = friends
+    // }
   },
 })
 

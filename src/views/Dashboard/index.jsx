@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useDashboardSlice } from '../../slices/dashboard'
 import Tableft from './Tableft'
 import TabCenter from './TabCenter'
