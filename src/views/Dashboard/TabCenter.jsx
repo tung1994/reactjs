@@ -53,14 +53,16 @@ const MessageSends = (props) => {
 
 const TabCenter = () => {
     const {id} = useParams();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // console.log(id)
     // const Messages = useSelector(selectMessageById(id))
-    useEffect(() => {
-        if(id) {
-            dispatch(action.fetchMessages(id))
-        }
-    }, [id])
+    // useEffect(() => {
+    //     if (id) {
+    //         dispatch(action.fetchMessages(id))
+    //     } else {
+    //         dispatch(action.fetchMessages(1))
+    //     }
+    // }, [id])
     const Messages = useSelector(selectMessageById())
     return (
         <div className='tab-center'>

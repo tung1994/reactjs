@@ -6,6 +6,7 @@ import { dashboardSaga } from '../sagas/dashboard'
 export const initialState = {
   user: [],
   content: [],
+  selectedId: null,
 }
 
 const slice = createSlice({
@@ -19,17 +20,25 @@ const slice = createSlice({
       const {friends} = action.payload
       state.user = friends
     },
-    // currentSelected()
 
-    fetchMessages(state, action) {
-      const {friends} = action.payload
-      state.content = friends
-    },
-
-    // messageById(state, action) {
+    // fetchMessages(state, action) {
+    //   // const {friends} = action.payload
+    //   // state.content = friends
+    // },
+    // fetchMessagesSuccess(state, action) {
     //   const {friends} = action.payload
     //   state.content = friends
-    // }
+    // },
+
+    fetchMessageById(state, action) {
+      const {id} = action.payload
+      state.selectedId = id
+    },
+
+    fetchMessageByIdSuccess(state, action) {
+      const {friends} = action.payload
+      state.content = friends
+    }
   },
 })
 

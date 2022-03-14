@@ -1,6 +1,7 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { dashboardActions as actions } from '../slices/dashboard'
 import * as api from '../api/dashboard'
+import { selectMessageById } from 'src/selectors/dashboard'
 
 function* initDashboard({ payload }) {
   try {
@@ -11,28 +12,28 @@ function* initDashboard({ payload }) {
   }
 }
 
-// function* userSelected() {
-//   try {
-//     const res = yield call(api.getContent)
-
-//     yield put(actions.messageById(res.data))  
-//   } catch {
-
-//   }
-// }
-
-function* fetchMessages({ payload }) {
+function* userSelected({ payload }) {
   try {
-    const result = yield call(api.getContent, payload)
+    const res = yield call(api.getContent, payload)
 
-    yield put(actions.fetchMessages(result.data))
+    yield put(actions.fetchMessageByIdSuccess(res.data))  
   } catch {
 
   }
 }
 
+// function* fetchMessages({ payload }) {
+//   try {
+//     const result = yield call(api.getContent, payload)
+
+//     yield put(actions.fetchMessagesSuccess(result.data))
+//   } catch {
+
+//   }
+// }
+
 export function* dashboardSaga() {
   yield takeLatest(actions.initDashboard.type, initDashboard)
-  // yield takeLatest(actions.initDashboard.type, userSelected)
-  yield takeLatest(actions.fetchMessages.type, fetchMessages)
+  yield takeLatest(actions.fetchMessageById.type, userSelected)
+  // yield takeLatest(actions.fetchMessages.type, fetchMessages)
 }

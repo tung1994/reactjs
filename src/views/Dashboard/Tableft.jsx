@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectListUser } from '../../selectors/dashboard'
 import { useHistory } from 'react-router-dom'
+import { dashboardActions as action } from 'src/slices/dashboard'
+import { useDispatch } from 'react-redux'
 
 const HeaderLeft = () => {
     return (
@@ -15,8 +17,10 @@ const HeaderLeft = () => {
 const ItemUser = (props) => {
     const {active, image, name, info, id} = props;
     const history = useHistory()
-    const userSelected = () => {
-        history.push('/' + id)
+    const dispatch = useDispatch();
+    const userSelected = (id) => {
+        // history.push('/' + id)
+        dispatch(action.fetchMessageById(id))
     }
     return (
         <div className='d-flex margin' onClick={ () =>userSelected(id) }>
